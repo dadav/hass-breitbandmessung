@@ -1,0 +1,3 @@
+breitbandmessung:
+  name: Breitbandmessung
+  description: Immediately execute a speed test with breitbandmessung.de
