@@ -1,0 +1,6 @@
+{
+  "name": "Breitbandmessung",
+  "country": "DE",
+  "domains": ["breitbandmessung", "sensor"],
+  "render_readme": true
+}
