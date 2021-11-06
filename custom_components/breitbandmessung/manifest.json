@@ -1,6 +1,7 @@
 {
   "domain": "breitbandmessung",
   "name": "Speedtest on breitbandmessung.de",
+  "version": "0.1.0",
   "config_flow": true,
   "documentation": "https://github.com/dadav/hass-breitbandmessung",
   "requirements": ["async-generator==1.10",
