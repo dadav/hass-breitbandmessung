@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from homeassistant.components.sensor import SensorEntity
-from homeassistant.components.speedtestdotnet import SpeedTestDataCoordinator
+from . import BreitbandDataCoordinator
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant
@@ -31,24 +31,24 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up the Speedtestdotnet sensors."""
-    speedtest_coordinator = hass.data[DOMAIN]
+    """Set up the Breitband sensors."""
+    breitband_coordinator = hass.data[DOMAIN]
     async_add_entities(
-        BreitbandSensor(speedtest_coordinator, description)
+        BreitbandSensor(breitband_coordinator, description)
         for description in SENSOR_TYPES
     )
 
 
 class BreitbandSensor(CoordinatorEntity, RestoreEntity, SensorEntity):
-    """Implementation of a speedtest.net sensor."""
+    """Implementation of a breitbandmessung.de sensor."""
 
-    coordinator: SpeedTestDataCoordinator
+    coordinator: BreitbandDataCoordinator
     entity_description: BreitbandSensorEntityDescription
     _attr_icon = ICON
 
     def __init__(
         self,
-        coordinator: SpeedTestDataCoordinator,
+        coordinator: BreitbandDataCoordinator,
         description: BreitbandSensorEntityDescription,
     ) -> None:
         """Initialize the sensor."""
