@@ -2,12 +2,12 @@
 
 import re
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from .downloader import download as webdriver_download
 
 class BreitbandException(Exception):
     """Something went wrong"""
@@ -23,7 +23,7 @@ class Breitbandmessung:
         try:
             chrome_options = Options()
             chrome_options.add_argument("--headless")
-            service = Service(ChromeDriverManager(log_level=0).install())
+            service = Service(webdriver_download(False))
             self.driver = webdriver.Chrome(service=service, options=chrome_options)
             self.element_wait = WebDriverWait(self.driver, Breitbandmessung.WAIT_TIMEOUT)
             self.result_wait = WebDriverWait(self.driver, Breitbandmessung.RESULT_TIMEOUT)
